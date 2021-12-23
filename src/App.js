@@ -17,6 +17,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
+          //Begin BookSearch Component
           <div className="search-books">
             <div className="search-books-bar">
               <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
@@ -37,13 +38,16 @@ class BooksApp extends React.Component {
               <ol className="books-grid"></ol>
             </div>
           </div>
+          //End BookSearch Component
         ) : (
           <div className="list-books">
+            {/*App Header*/}
             <div className="list-books-title">
               <h1>Digi-Biblioteca</h1>
             </div>
             <div className="list-books-content">
               <div>
+                {/*Begin Shelf #1 Component*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
@@ -87,6 +91,9 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
+                {/*End Shelf #1 Component*/}
+
+                {/*Begin Shelf #2 Component*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
@@ -130,6 +137,9 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
+                {/*End Shelf #2 Component*/}
+
+                {/*Begin Shelf #3 Component*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
@@ -191,8 +201,11 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
+                {/*End  Shelf #3 Component*/}
+
               </div>
             </div>
+            {/*SearchResult Component*/}
             <div className="open-search">
               <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
             </div>
