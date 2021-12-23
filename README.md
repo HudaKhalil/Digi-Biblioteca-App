@@ -21,7 +21,7 @@ To get started using the app:
 
 ### UI Mockups Drawings
 
-[The Digital UI Mockups Drawings](https://balsamiq.cloud/syydoh/p3jwc17)
+[The Digital UI Mockups Drawings](https://balsamiq.cloud/syydoh/p3jwc17){:target="_blank" rel="noopener"}
 
 #### App Main Page
 
