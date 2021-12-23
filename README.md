@@ -1,9 +1,11 @@
 # Digi-Biblioteca Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+In the My Digi-Biblioteca project, I create a bookshelf app that allows you to:
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+* Search for books based on title and author.
+* Categorize books you have read, are currently reading, or want to read. 
 
+The project emphasizes using React to build the application and provides an API server and client library.
 ## TL;DR
 
 To get started developing right away:
@@ -12,6 +14,7 @@ To get started developing right away:
 * start the development server with `npm start`
 
 ## What You're Getting
+
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
