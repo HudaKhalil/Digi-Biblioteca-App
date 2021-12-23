@@ -3,9 +3,11 @@
 In the My Digi-Biblioteca project, I create a bookshelf app that allows you to:
 
 * Search for books based on title and author.
-* Categorize books you have read, are currently reading, or want to read. 
+* Categorize books you have read, are currently reading, or want to read.
 
 The project emphasizes using React to build the application and provides an API server and client library.
+
+This project [Starter Code](https://github.com/udacity/reactnd-project-myreads-starter) provided from [Udacity](https://www.udacity.com/) as part of [React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019)
 ## TL;DR
 
 To get started developing right away:
@@ -82,6 +84,7 @@ search(query)
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
 ## Important
+
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 ## Create React App
