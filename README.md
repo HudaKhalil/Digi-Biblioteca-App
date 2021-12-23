@@ -23,7 +23,7 @@ To get started using the app:
 
 #### App Main Page
 
-![App Break Each View Into a Hierarchy of Components ](https://ibb.co/0mqNWV0)
+![App Break Each View Into a Hierarchy of Components ](https://i.ibb.co/yd0TMBz/app-ui-01.jpg)
 
 #### Search Page
 
