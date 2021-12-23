@@ -25,7 +25,7 @@ To get started using the app:
 
 ### App Hierarchy of Components
 
-![App Break Each View Into Hierarchy of Components](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_03.JPG)
+![App Hierarchy of Components](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_03.JPG)
 
 #### App Main Page
 
