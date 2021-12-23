@@ -27,6 +27,8 @@ To get started using the app:
 
 #### Search Page
 
+![Search Page Break Each View Into a Hierarchy of Components ](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_02.JPG)
+
 ## Backend Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
