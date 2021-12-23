@@ -19,16 +19,20 @@ To get started using the app:
 
 ## Planning Stage
 
+### App Hierarchy of Components
+
+![App Break Each View Into Hierarchy of Components](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_03.JPG)
+
 ### UI Mockups Drawings
 
-[The Digital UI Mockups Drawings](https://balsamiq.cloud/syydoh/p3jwc17)
+![The Digital UI Mockups Drawings](https://balsamiq.cloud/syydoh/p3jwc17)
 
 #### App Main Page
 
-![App Break Each View Into a Hierarchy of Components ](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_01.JPG)
+![App Break Each View Into Components](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_01.JPG)
 
 #### Search Page
 
-![Search Page Break Each View Into a Hierarchy of Components ](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_02.JPG)
+![Search Page Break Each View Into Components ](https://github.com/HudaKhalil/Digi-Biblioteca-App/blob/master/src/icons/app_ui_02.JPG)
 
 ## Final App Screenshots
