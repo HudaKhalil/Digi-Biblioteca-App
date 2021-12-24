@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class BookStatus extends Component {
-    render() {
+const BookStatus = ({book}) => {
+
         return (
             <div className="book-shelf-changer">
-                    <select>
+                    <select defaultValue={book.bookShelf}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
@@ -14,6 +14,5 @@ export class BookStatus extends Component {
             </div>
         )
     }
-}
 
 export default BookStatus

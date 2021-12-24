@@ -3,15 +3,15 @@ import BookShelf from './BookShelf';
 
 const BookShelves = ({books}) => {
 
-    const currentlyReading = books.filter((book) => book.bookShelfChanger === "CurrentlyReading");
-    const wantToRead = books.filter((book) => book.bookShelfChanger === "WantToRead");
-    const read = books.filter((book) => book.bookShelfChanger === "Read");
+    const currentlyReading = books.filter((book) => book.bookShelf === "currentlyReading");
+    const wantToRead = books.filter((book) => book.bookShelf === "wantToRead");
+    const read = books.filter((book) => book.bookShelf === "read");
 
     return (
         <div>
-            <BookShelf title='Currently Reading' books={currentlyReading}/>
-            <BookShelf title='Want to Read' books={wantToRead}/>
-            <BookShelf title='Read' books={read}/>
+            <BookShelf bookShelfTitle='Currently Reading' books={currentlyReading}/>
+            <BookShelf bookShelfTitle='Want to Read' books={wantToRead}/>
+            <BookShelf bookShelfTitle='Read' books={read}/>
         </div>
     )
 }
