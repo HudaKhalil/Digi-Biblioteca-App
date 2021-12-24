@@ -1,7 +1,7 @@
 import React from 'react'
 import BookStatus from './BookStatus'
 
-const Book = ({book, bookCurrentShelf}) => {
+const Book = ({book}) => {
     return (
         
         <div className="book">
