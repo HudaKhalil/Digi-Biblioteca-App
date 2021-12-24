@@ -1,27 +1,20 @@
-import React from 'react'
-import Book from './Book'
-import '../App.css'
+import React from 'react';
+import Book from './Book';
 
-function BookShelf({ books }) {
+const BookShelf = ({books}) => {
     return (
-        <div>
-
-            <div className="bookshelf">
-                <h2 className="bookshelf-title">Currently Reading</h2>
-                <div className="bookshelf-books">
+           <div className="bookshelf">
+                  <h2 className="bookshelf-title">Currently Reading</h2>
+                  <div className="bookshelf-books">
                     <ol className="books-grid">
-                        <li>
-                            <Book />
-                        </li>
-                        <li>
-                            <Book />
-                        </li>
+                      {books.map(eachBook =>
+                          <li>
+                            <Book book={eachBook} />
+                          </li>
+                        )}
                     </ol>
+                  </div>
                 </div>
-            </div>
-
-        </div>
-
     )
 }
 

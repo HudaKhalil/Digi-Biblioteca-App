@@ -1,18 +1,17 @@
 import React from 'react';
-/* import BookSearch from './BookSearch'; */
 import BookShelf from './BookShelf';
 
-const BookShelves = () => {
+const BookShelves = ({books}) => {
 
-    const currentlyReading = [];
-    /* const wantToRead = [];
-    const read = []; */
-    
+    const currentlyReading = books.filter((book) => book.bookShelfChanger === "CurrentlyReading");
+    const wantToRead = books.filter((book) => book.bookShelfChanger === "WantToRead");
+    const read = books.filter((book) => book.bookShelfChanger === "Read");
+
     return (
         <div>
             <BookShelf title='Currently Reading' books={currentlyReading}/>
-            {/* <BookShelf title='Want to Read' books={wantToRead}/>
-            <BookShelf title='Read' books={read}/> */}
+            <BookShelf title='Want to Read' books={wantToRead}/>
+            <BookShelf title='Read' books={read}/>
         </div>
     )
 }
