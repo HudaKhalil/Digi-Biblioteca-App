@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Shelf() {
+const BookShelf = () => {
     return (
         <div>
-            Shelf Component
+            
         </div>
     )
 }
 
-export default Shelf
+export default BookShelf
