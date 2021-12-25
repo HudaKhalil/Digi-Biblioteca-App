@@ -3,9 +3,9 @@ import BookShelf from './BookShelf';
 
 const BookShelves = ({books, moveBookBTWShelves}) => {
 
-    const currentlyReading = books.filter((book) => book.bookShelf === "currentlyReading");
-    const wantToRead = books.filter((book) => book.bookShelf === "wantToRead");
-    const read = books.filter((book) => book.bookShelf === "read");
+    const currentlyReading = books.filter((book) => book.shelf === "currentlyReading");
+    const wantToRead = books.filter((book) => book.shelf === "wantToRead");
+    const read = books.filter((book) => book.shelf === "read");
 
     return (
         <div>

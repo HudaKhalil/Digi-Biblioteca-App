@@ -8,7 +8,7 @@ const BookShelf = ({books, bookShelfTitle, moveBookBTWShelves}) => {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       {books.map(eachBook =>
-                          <li key={eachBook.bookId}>
+                          <li key={eachBook.id}>
                             <Book book={eachBook} moveBook={moveBookBTWShelves} />
                           </li>
                         )}
