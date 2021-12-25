@@ -14,7 +14,7 @@ const BooksApp = () => {
      useEffect(() => {
           BooksAPI.getAll()
           .then(data => {
-            console.log(data)
+            /* console.log(data) */
             setBooks(data)}
             );
       }, [])
