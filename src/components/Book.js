@@ -2,6 +2,7 @@ import React from 'react'
 import BookStatus from './BookStatus'
 
 const Book = ({book}) => {
+
     return (
         
         <div className="book">
