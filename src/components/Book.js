@@ -10,7 +10,8 @@ const Book = ({book, moveBook}) => {
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}>
                        {/*  <BookStatus book={book}  moveBook={moveBookBTWShelves}/> */}
                         <div className="book-shelf-changer">
-                            <select defaultValue={book.shelf} onChange={(e) => moveBook(book, e.target.value)}>
+                            {/* Adding condition if new books, set shelf none */}
+                            <select defaultValue={book.shelf ? book.shelf : "none"} onChange={(e) => moveBook(book, e.target.value)}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

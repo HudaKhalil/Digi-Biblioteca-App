@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
+// eslint-disable-next-line
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 /* import BookSearch from './components/BookSearch' */
 import BookShelves from './components/BookShelves'
+import Book from './components/Book'
 
 const BooksApp = () => {
      /** TODO: Instead of using this state variable to keep track of which page
@@ -10,19 +13,44 @@ const BooksApp = () => {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
+    
+    const [showSearchPage, setShowSearchPage ] = useState(false);
+    const [books, setBooks] = useState([]);
+    const [searchData, setSearchData] = useState([]);
+    const [find, setFind] = useState("");
 
-     useEffect(() => {
+    //calling books from booksAPI
+    useEffect(() => {
           BooksAPI.getAll()
           .then(data => {
-            /* console.log(data) */
             setBooks(data)}
             );
       }, [])
 
-    const [showSearchPage, setShowSearchPage ] = useState(false);
+    //calling search from booksAPI to query books
+    useEffect(() => {
 
-    /* const [books, setBooks] = useState(initBooks) */
-    const [books, setBooks] = useState([])
+       let isReset = true; 
+
+      if (find) {
+         BooksAPI.search(find).then(query => {
+           if (query.error) {
+             setSearchData([])
+           } else {
+             if (isReset)
+             {setSearchData(query);
+            }
+           }
+         })
+      }
+      return () => {
+        // If user clear search bar reset the search data
+        isReset = false;
+        setSearchData([]);
+      }
+        
+    }, [find])
+    
     const moveBookBTWShelves = (book, moveTo ) => {
           const newBookShelf = books.map(b => {
             if (b.id === book.id){
@@ -49,12 +77,18 @@ const BooksApp = () => {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
-
+                <input type="text" placeholder="Search by title or author" value={find} onChange={(e) => setFind(e.target.value)}/>
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+                {searchData.map(eachBook =>
+                          <li key={eachBook.id}>
+                            <Book book={eachBook} moveBook={moveBookBTWShelves} />
+                          </li>
+                        )}
+              </ol>
+                
             </div>
           </div>
         ) : (
