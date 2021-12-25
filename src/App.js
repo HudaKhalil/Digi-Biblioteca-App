@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// eslint-disable-next-line
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
@@ -13,8 +12,6 @@ const BooksApp = () => {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    
-    const [showSearchPage, setShowSearchPage ] = useState(false);
     const [books, setBooks] = useState([]);
     const [searchData, setSearchData] = useState([]);
     const [find, setFind] = useState("");
@@ -65,50 +62,61 @@ const BooksApp = () => {
 
     return (
       <div className="app">
-        {showSearchPage ? (
-          <div className="search-books">
-            <div className="search-books-bar">
-              <button className="close-search" onClick={() => setShowSearchPage(false)}>Close</button>
-              <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author" value={find} onChange={(e) => setFind(e.target.value)}/>
+      <Router>
+        <Switch>
+            {/*App Search*/}
+            <Route path="/search">
+                <div className="search-books">
+                <div className="search-books-bar">
+                  <Link to="/">
+                    <button className="close-search">Close</button>
+                  </Link>
+                  <div className="search-books-input-wrapper">
+                    {/*
+                      NOTES: The search from BooksAPI is limited to a particular set of search terms.
+                      You can find these search terms here:
+                      https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+                      However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
+                      you don't find a specific author or title. Every search is limited by search terms.
+                    */}
+                    <input type="text" placeholder="Search by title or author" value={find} onChange={(e) => setFind(e.target.value)}/>
+                  </div>
+                </div>
+                <div className="search-books-results">
+                  <ol className="books-grid">
+                    {searchData.map(eachBook =>
+                              <li key={eachBook.id}>
+                                <Book book={eachBook} moveBook={moveBookBTWShelves} />
+                              </li>
+                            )}
+                  </ol>
+                    
+                </div>
               </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid">
-                {searchData.map(eachBook =>
-                          <li key={eachBook.id}>
-                            <Book book={eachBook} moveBook={moveBookBTWShelves} />
-                          </li>
-                        )}
-              </ol>
-                
-            </div>
-          </div>
-        ) : (
-          <div className="list-books">
-            {/*App Header*/}
-            <div className="list-books-title">
-              <h1>Digi-Biblioteca</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <BookShelves  books={books} moveBookBTWShelves={moveBookBTWShelves}/>
+            </Route>
+
+            {/*App Main*/}
+            <Route path="/">
+              <div className="list-books">
+                {/*App Header*/}
+                <div className="list-books-title">
+                  <h1>Digi-Biblioteca</h1>
+                </div>
+                <div className="list-books-content">
+                  <div>
+                    <BookShelves  books={books} moveBookBTWShelves={moveBookBTWShelves}/>
+                  </div>
+                </div>
+                {/*SearchResult Component*/}
+                <div className="open-search">
+                  <Link to="/search">
+                      <button>Add a book</button>
+                  </Link>
+                </div>
               </div>
-            </div>
-            {/*SearchResult Component*/}
-            <div className="open-search">
-              <button onClick={() => setShowSearchPage(true)}>Add a book</button>
-            </div>
-          </div>
-        )}
-        
+            </Route>
+        </Switch>
+      </Router>
     </div>
     )
  }
