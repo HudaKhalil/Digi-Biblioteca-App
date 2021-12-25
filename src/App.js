@@ -70,7 +70,7 @@ const BooksApp = () => {
             </div>
             {/*SearchResult Component*/}
             <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+              <button onClick={() => setShowSearchPage(true)}>Add a book</button>
             </div>
           </div>
         )}
