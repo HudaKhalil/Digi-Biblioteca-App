@@ -13,16 +13,33 @@ const BooksApp = () => {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     const [books, setBooks] = useState([]);
+    const [mapOfIdToBooks, setMapOfIdToBooks] = useState(new Map());
     const [searchData, setSearchData] = useState([]);
     const [find, setFind] = useState("");
+    const [mergedBooks, setMergedBooks] = useState([]);
 
     //calling books from booksAPI
     useEffect(() => {
           BooksAPI.getAll()
-          .then(data => {
-            setBooks(data)}
+          .then(data => 
+            {
+              setBooks(data)
+              setMapOfIdToBooks(createMapOfBooks(data))
+            }
             );
       }, [])
+
+    useEffect(() => {
+
+    const combined = searchData.map(book => {
+      if (mapOfIdToBooks.has(book.id)) {
+        return mapOfIdToBooks.get(book.id);
+      } else {
+        return book;
+      }
+    })
+    setMergedBooks(combined);
+  }, [searchData])
 
     //calling search from booksAPI to query books
     useEffect(() => {
@@ -48,6 +65,13 @@ const BooksApp = () => {
         
     }, [find])
     
+
+    const createMapOfBooks = (books) => {
+    const map = new Map();
+    books.map(book => map.set(book.id, book));
+    return map;
+  }
+
     const moveBookBTWShelves = (book, moveTo ) => {
           const newBookShelf = books.map(b => {
             if (b.id === book.id){
@@ -56,6 +80,10 @@ const BooksApp = () => {
             }
             return b;
           })
+          if (!mapOfIdToBooks.has(book.id)) {
+            book.shelf = moveTo;
+            newBookShelf.push(book)
+          }
           setBooks(newBookShelf);
           BooksAPI.update(book, moveTo);
     }
@@ -84,7 +112,7 @@ const BooksApp = () => {
                 </div>
                 <div className="search-books-results">
                   <ol className="books-grid">
-                    {searchData.map(eachBook =>
+                    {mergedBooks.map(eachBook =>
                               <li key={eachBook.id}>
                                 <Book book={eachBook} moveBook={moveBookBTWShelves} />
                               </li>

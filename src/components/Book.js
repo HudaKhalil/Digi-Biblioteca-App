@@ -29,7 +29,6 @@ const Book = ({book, moveBook}) => {
                     book.authors.map((author) => (
                     <div key={author}>
                         <span>{author}</span>
-                       {/*  <br /> */}
                     </div>
                     ))
                 ) : (
