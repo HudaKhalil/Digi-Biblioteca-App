@@ -25,16 +25,16 @@ const Book = ({book, moveBook}) => {
             <div className="book-title">{book.title}</div>
             <div className="book-authors">
                 {/*All of the authors of the book should be shown*/}
-            {_.isArray(book.authors) ? (
-                book.authors.map((author) => (
-                <div key={author}>
-                    <span>{author}</span>
-                    <br />
-                </div>
-                ))
-               ) : (
-                <span>{book.authors}</span>
-                  )}
+                {_.isArray(book.authors) ? (
+                    book.authors.map((author) => (
+                    <div key={author}>
+                        <span>{author}</span>
+                        <br />
+                    </div>
+                    ))
+                ) : (
+                    <span>{book.authors}</span>
+                    )}
           </div>
         </div>
         
