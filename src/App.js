@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { useDebounce } from 'use-debounce'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 /* import BookSearch from './components/BookSearch' */
@@ -16,6 +17,8 @@ const BooksApp = () => {
     const [arrayOfBooksIds, setArrayOfBooksIds] = useState(new Map());
     const [searchData, setSearchData] = useState([]);
     const [find, setFind] = useState("");
+    // https://github.com/xnimorz/use-debounce#simple-values-debouncing
+    const [value] = useDebounce(find, 500);
     const [joindBooks, setJoindBooks] = useState([]);
 
     //calling books from booksAPI
@@ -46,13 +49,13 @@ const BooksApp = () => {
 
        let isReset = true; 
 
-      if (find) {
-         BooksAPI.search(find).then(query => {
-           if (query.error) {
+      if (value) {
+         BooksAPI.search(value).then(d => {
+           if (d.error) {
              setSearchData([])
            } else {
              if (isReset)
-             {setSearchData(query);
+             {setSearchData(d);
             }
            }
          })
@@ -63,7 +66,7 @@ const BooksApp = () => {
         setSearchData([]);
       }
         
-    }, [find])
+    }, [value])
     
 
     const arrayOfBooks = (books) => 
