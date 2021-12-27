@@ -13,10 +13,10 @@ const BooksApp = () => {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     const [books, setBooks] = useState([]);
-    const [mapOfIdToBooks, setMapOfIdToBooks] = useState(new Map());
+    const [arrayOfBooksIds, setArrayOfBooksIds] = useState(new Map());
     const [searchData, setSearchData] = useState([]);
     const [find, setFind] = useState("");
-    const [mergedBooks, setMergedBooks] = useState([]);
+    const [joindBooks, setJoindBooks] = useState([]);
 
     //calling books from booksAPI
     useEffect(() => {
@@ -24,21 +24,21 @@ const BooksApp = () => {
           .then(data => 
             {
               setBooks(data)
-              setMapOfIdToBooks(createMapOfBooks(data))
+              setArrayOfBooksIds(arrayOfBooks(data))
             }
             );
       }, [])
 
     //Map books in search when self updated, to books in shelves in main page
     useEffect(() => {
-    const combined = searchData.map(book => {
-      if (mapOfIdToBooks.has(book.id)) {
-        return mapOfIdToBooks.get(book.id);
+    const joined = searchData.map(book => {
+      if (arrayOfBooksIds.has(book.id)) {
+        return arrayOfBooksIds.get(book.id);
       } else {
         return book;
       }
     })
-    setMergedBooks(combined);
+    setJoindBooks(joined);
   }, [searchData])
 
     //calling search from booksAPI to query books
@@ -66,11 +66,11 @@ const BooksApp = () => {
     }, [find])
     
 
-    const createMapOfBooks = (books) => 
+    const arrayOfBooks = (books) => 
     {
-      const map = new Map();
-      books.map(book => map.set(book.id, book));
-      return map;
+      const arry = new Map();
+      books.map(book => arry.set(book.id, book));
+      return arry;
   }
 
     const moveBookBTWShelves = (book, moveTo ) => {
@@ -81,7 +81,7 @@ const BooksApp = () => {
             }
             return b;
           })
-          if (!mapOfIdToBooks.has(book.id)) {
+          if (!arrayOfBooksIds.has(book.id)) {
             book.shelf = moveTo;
             newBookShelf.push(book)
           }
@@ -113,7 +113,7 @@ const BooksApp = () => {
                 </div>
                 <div className="search-books-results">
                   <ol className="books-grid">
-                    {mergedBooks.map(eachBook =>
+                    {joindBooks.map(eachBook =>
                               <li key={eachBook.id}>
                                 <Book book={eachBook} moveBook={moveBookBTWShelves} />
                               </li>

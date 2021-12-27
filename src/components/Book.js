@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from "lodash";
+// import _ from "lodash"
 /* import BookStatus from './BookStatus' */
 
 const Book = ({book, moveBook}) => {
@@ -25,15 +25,7 @@ const Book = ({book, moveBook}) => {
             <div className="book-title">{book.title}</div>
             <div className="book-authors">
                 {/*All of the authors of the book should be shown*/}
-                {_.isArray(book.authors) ? (
-                    book.authors.map((author) => (
-                    <div key={author}>
-                        <span>{author}</span>
-                    </div>
-                    ))
-                ) : (
-                    <span>{book.authors}</span>
-                    )}
+                {book.authors ? book.authors.join(', ') : 'No author found'}
           </div>
         </div>
         
