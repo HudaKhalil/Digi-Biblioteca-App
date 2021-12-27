@@ -29,8 +29,8 @@ const BooksApp = () => {
             );
       }, [])
 
+    //Map books in search when self updated, to books in shelves in main page
     useEffect(() => {
-
     const combined = searchData.map(book => {
       if (mapOfIdToBooks.has(book.id)) {
         return mapOfIdToBooks.get(book.id);
@@ -66,10 +66,11 @@ const BooksApp = () => {
     }, [find])
     
 
-    const createMapOfBooks = (books) => {
-    const map = new Map();
-    books.map(book => map.set(book.id, book));
-    return map;
+    const createMapOfBooks = (books) => 
+    {
+      const map = new Map();
+      books.map(book => map.set(book.id, book));
+      return map;
   }
 
     const moveBookBTWShelves = (book, moveTo ) => {
